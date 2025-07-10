@@ -91,7 +91,7 @@ Crypto-anayize/
 ### Frontend Configuration
 - **File**: `web-service-front/nginx.conf`
 - **Port**: 80 (internal), 8080 (external)
-- **Domains**: y0profit.xyz, www.y0profit.xyz, frontend.y0profit.xyz
+- **Domains**: y0profit.xyz, www.y0profit.xyz
 
 ### Backend Configuration
 - **File**: `web-service-bek/index.js`
@@ -135,25 +135,6 @@ docker-compose down
 docker-compose restart frontend
 ```
 
-## 🔍 Troubleshooting
-
-### Common Issues
-
-1. **Error 521**: Cloudflare can't reach your server
-   - Check if tunnel is running: `docker-compose logs cloudflared`
-   - Verify DNS records in Cloudflare Dashboard
-   - Ensure tunnel credentials are correct
-
-2. **Error 404**: Page not found
-   - Check nginx configuration
-   - Verify frontend container is running
-   - Check if index.html exists in build
-
-3. **API not working**: 
-   - Check backend container logs: `docker-compose logs backend`
-   - Verify API endpoint is accessible locally
-   - Check nginx proxy configuration
-
 ### Useful Commands
 
 ```bash
@@ -172,13 +153,6 @@ docker-compose exec backend sh
 # Test API locally
 curl http://localhost:8001/api/crypto/BTCUSD
 ```
-
-## 🔐 Security
-
-- All sensitive files (credentials, certificates) are in `.gitignore`
-- Cloudflare Tunnel provides secure access
-- Database credentials are environment variables
-- HTTPS enforced through Cloudflare
 
 ## 📝 Development
 
