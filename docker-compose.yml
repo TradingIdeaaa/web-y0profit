@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./web-service-front
+    ports:
+      - "8080:80"
+    networks:
+      - crypto-network
+
+  backend:
+    build:
+      context: ./web-service-bek
+    ports:
+      - "8001:8000"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=crypto_db
+      - POSTGRES_USER=crypto_user
+      - POSTGRES_PASSWORD=crypto_pass
+    depends_on:
+      - postgres
+    networks:
+      - crypto-network
+
+  postgres:
+    build:
+      context: ./web-service-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - crypto-network
+
+  cloudflared:
+    build:
+      context: ./web-service-cloudflare
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - crypto-network
+
+networks:
+  crypto-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

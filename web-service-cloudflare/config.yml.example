@@ -1,0 +1,10 @@
+tunnel: your-tunnel-name
+credentials-file: /etc/cloudflared/your-tunnel-id.json
+ingress:
+  - hostname: your-domain.com
+    service: http://frontend:80
+  - hostname: api.your-domain.com
+    service: http://backend:8000
+  - hostname: www.your-domain.com
+    service: http://frontend:80
+  - service: http_status:404 
