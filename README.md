@@ -82,7 +82,7 @@ Crypto-anayize/
 └── web-service-cloudflare/
     ├── config.yml
     ├── cert.pem
-    ├── 54a09257-3956-4ef3-8441-482db361f6e5.json
+    ├── xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.json
     └── Dockerfile
 ```
 
